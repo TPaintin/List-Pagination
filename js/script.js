@@ -16,8 +16,11 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
+const studentItem = document.querySelectorAll('.student-item');
+const itemsPerPage = 10;
 
-
+Loop over the list parameter.
+Inside the loop, display any list item with an index that is greater than or equal to the start index variable and less than the end index variable.
 
 
 /*** 
@@ -25,16 +28,24 @@ FSJS project 2 - List Filter and Pagination
    list except for the ten you want to show.
 
    Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
+      - Keep in mind that with a list of 54 students, the last page 
+         will only display four.
+      - Remember that the first student has an index of 0.
+      - Remember that a function `parameter` goes in the parens when 
+         you initially define the function, and it acts as a variable 
+         or a placeholder to represent the actual function `argument` 
+         that will be passed into the parens later when you call or 
+         "invoke" the function 
 ***/
-
+function showPage (list, page) {
+   const startIndex = (page * itemsPerPage) - itemsPerPage;
+   const endIndex = (page * itemsPerPage);
+   for (let i = 0; i < list.length; i += 1) {
+      if ( list >= startIndex && list <= endIndex) {
+         
+      }
+   }
+}
 
 
 
