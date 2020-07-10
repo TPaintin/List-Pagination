@@ -16,7 +16,7 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-const studentList = document.querySelectorAll('.student-list');
+let studentItem = document.querySelectorAll('.student-item');
 const itemsPerPage = 10;
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -35,44 +35,28 @@ const itemsPerPage = 10;
 function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = (page * itemsPerPage);
-   for (let i = 0; i < list.length; i += 1) {
-      let li = list[i];
-      if (li >= startIndex && li <= endIndex) {
-         li.style.display == '';
-         } else {
-            li.style.display = 'none';
+   for (let i = 0; i < list.length; i ++) {
+      if ( list[i] >= startIndex && list[i] <= endIndex) {
+         
       }
+      
    }
 }
+
+
+
+
+showPage(studentItem, 1);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 
 
-5. Add an event listener to each a tag. When they are clicked
-call the showPage function to display the appropriate page
+// 5. Add an event listener to each a tag. When they are clicked
+// call the showPage function to display the appropriate page
 
-function appendPageLinks(list) {
-   const numOfPages = studentList / itemsPerPage;
-   let paginationDiv = document.createElement('div');
-   paginationDiv.className = 'pagination';
-   let pageDiv = document.querySelector('.page');
-   pageDiv.appendChild(paginationDiv);
-   let ul = document.createElement('ul');
-   paginationDiv.appendChild(ul);
-   for (numOfPages) {
-      let li = document.createElement('li');
-      li.textContent = '[numOfPages]';
-      ul.appendChild(li);
-      let a = document.createElement('a');
-      a.textContent = '[numOfPages]';
-      li.appendChild(a);
-      a.addEventListener('click', (e) => {
-         showPage();
-      });
-   }
-}
+
 
 
 
