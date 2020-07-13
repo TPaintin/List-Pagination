@@ -16,7 +16,7 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-let studentItem = document.querySelectorAll('.student-item');
+let studentList = document.querySelectorAll('.student-item');
 const itemsPerPage = 10;
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -36,23 +36,48 @@ function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = (page * itemsPerPage);
    for (let i = 0; i < list.length; i ++) {
-      if ( list[i] >= startIndex && list[i] <= endIndex) {
-         
+      if ( i >= startIndex && i < endIndex) {
+         list.innerHTML = list[i];
+      } else {
+         list[i].style.display = 'none';
       }
-      
    }
 }
 
-
-
-
-showPage(studentItem, 1);
+showPage(studentList, 1);
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
+function appendPageLinks(list) {
+   let numOfPages = Math.floor(list.length / itemsPerPage); 
+   const paginationDiv = document.createElement('div');
+   paginationDiv.className = 'pagination';
+   document.querySelector('.page').appendChild(paginationDiv);
+   const paginationUl = document.createElement('ul');
+   paginationDiv.appendChild(paginationUl);
+   for (let i = 0; i < numOfPages; i ++) {
+      let paginationLi = document.createElement('li');
+      paginationUl.appendChild(paginationLi);
+      let paginationA = document.createElement('a');
+      paginationA.textContent = i + 1;
+      paginationLi.appendChild(paginationA); 
+      paginationA.addEventListener('click', () => {
+         showPage();
+      });
+      for (let i = 0; i < paginationUl.length; i ++) {
+         paginationA.className = 'none';
+         event.target.className = 'active';
+      } 
+      
+   }
 
 
+
+
+
+}
+appendPageLinks(studentList);
 // 5. Add an event listener to each a tag. When they are clicked
 // call the showPage function to display the appropriate page
 
