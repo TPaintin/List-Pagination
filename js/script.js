@@ -69,17 +69,20 @@ function appendPageLinks(list) {
    }
 
    
-   document.querySelector('.pagination').firstChild.firstChild.firstChild.className = 'active';
+   document.querySelector('li > a').className = 'active';
 
-   paginationUl.addEventListener('click', () => { //5
-      console.log(event.target);
-      
-   });  //5
+   document.addEventListener('click', () => {
+      for (let i = 0; i < itemsPerPage; i ++) {
+         document.querySelector('a').classList.remove('active');
+         //    17/07 
+         //    When a pagination link is clicked:
+         //   The active class name should be removed from all pagination links. A loop can be helpful for this step.
+         event.target.className = 'active';
+      }
+   })
 
 }
 appendPageLinks(studentList);
-// 5. Add an event listener to each a tag. When they are clicked
-// call the showPage function to display the appropriate page
 
 
 
