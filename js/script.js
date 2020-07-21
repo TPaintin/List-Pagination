@@ -68,11 +68,25 @@ function appendPageLinks(list) {
       paginationLi.appendChild(paginationA); //4
    }
    
-// // Add the active class name to the first pagination link initially.
-// Add a “click” event listener to each A element. A loop can be helpful here.
-// When a pagination link is clicked:
-// The active class name should be removed from all pagination links. A loop can be helpful for this step.
-// The active class name should be added to the link that was just clicked. The target property of the event object should be useful here.
+   
+   const aTags = document.querySelectorAll('a');
+   const active = document.getElementsByClassName('active');
+   aTags[0].className = 'active';  
+   
+
+   for (let i = 0; i < aTags.length; i ++) { //4
+      aTags[i].addEventListener('click', () => {
+         active[0].classList.remove('active');
+         aTags[i].className = 'active';
+         let pageNum = i + 1;
+         console.log(aTags[i].textContent);
+         console.log(pageNum);
+         showPage(studentList, pageNum);
+      })
+
+   }
+   
+
 // The function to show a page should be called, passing in as arguments, the global variable for the list items, and the page number that should be shown. The text content of the A element that was just clicked can be helpful here.
 
 
